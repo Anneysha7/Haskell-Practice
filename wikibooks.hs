@@ -14,8 +14,15 @@ index list position
 zipList :: [a] -> [b] -> [(a, b)]
 zipList list1 list2
     | list1 == [] || list2 == [] = []
-    | otherwise = [(head list1), (head list2)] ++ zipList [list1] [list2]
+    | otherwise = [head list1, head list2] : zipList list1 list2
 -}
+
+--zipList1 :: [a] -> [b] -> [(a,b)]
+zipList2 :: [Char] -> [Int] -> [(Char, Int)]
+zipList2 a b = case (a,b) of
+    ([], _) -> []
+    (_, []) -> []
+    (x:xs, y:ys) -> (x,y): zipList2 xs ys
 
 doubleFactorial :: Int -> Int
 doubleFactorial int = case int of
