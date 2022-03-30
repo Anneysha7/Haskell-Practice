@@ -9,13 +9,11 @@ index :: [a] -> Int -> a
 index list position
     | position == 0 = head list
     | otherwise = list !! position
-
-{-
-zipList :: [a] -> [b] -> [(a, b)]
+    
+zipList :: (Eq a, Eq b) => [a] -> [b] -> [(a, b)]
 zipList list1 list2
     | list1 == [] || list2 == [] = []
-    | otherwise = [head list1, head list2] : zipList list1 list2
--}
+    | otherwise = (head list1, head list2) : zipList (tail list1) (tail list2)
 
 --zipList1 :: [a] -> [b] -> [(a,b)]
 zipList2 :: [Char] -> [Int] -> [(Char, Int)]
@@ -37,12 +35,10 @@ power x y
 plusOne :: Double -> Double
 plusOne x = x + 1
 
-{-
 addition :: Double -> Double -> Double
-addition x y
-    | y == 0 = 0    
-    | otherwise = addition (plusOne x) (y-1) 
--}
+addition x y = case (x,y) of
+    (x, 0) -> x
+    (x,y) -> addition (plusOne x) (y-1)
 
 data Element = Air | Earth | Fire | Water
 transform :: Element -> Element
