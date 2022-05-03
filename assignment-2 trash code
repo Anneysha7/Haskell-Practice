@@ -20,3 +20,20 @@
 --   | isAlive grid (x + fst(head list), y + snd(head list))
 --                       = aliveNeighbours grid (x,y) bool (tail list) (count + 1)
 --   | otherwise         = aliveNeighbours grid (x,y) bool (tail list) count
+    -- 2 -> A
+    -- 3
+    --     | (isAlive grid coord) -> A
+    --     | otherwise -> D
+    -- 4
+    --     | (isAlive grid coord) -> D
+    --     | otherwise -> A
+    -- _ -> D
+    
+    -- aliveNeighbours :: Grid QRCell -> GridCoord -> Int
+-- aliveNeighbours grid coord = length (filter isAlive (map grid (neighbours coord)))
+
+-- | Helper function to 
+isAlive :: QRCell -> Bool
+isAlive cell = case cell of
+    A -> True
+    D -> False
