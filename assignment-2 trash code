@@ -1,0 +1,22 @@
+--   | aliveNeighbours == 3 && D          = A  -- 3 alive neighbours and dead current cell
+--   | aliveNeighbours == 2 && A          = A  -- 2 alive neighbours and alive current cell
+--   | aliveNeighbours == 3 && A          = A  -- 3 alive neighbours and alive current cell
+--   | otherwise                          = D  -- dead in all other cases
+
+-- singleCell :: (Grid QRCell -> GridCoord -> Bool -> [GridCoord] -> Int -> Int) -> QRCell
+-- singleCell (aliveNeighbours grid (x,y) bool list count) = case (aliveNeighbours grid (x,y) bool list count) of
+--         True
+--             | (aliveNeighbours grid (x,y) bool list count) < 2 -> D
+--             | (aliveNeighbours grid (x,y) bool list count) == 2 || (aliveNeighbours grid (x,y) bool list count) == 3 -> A
+--             | otherwise -> D
+--         False
+--             | (aliveNeighbours grid (x,y) bool list count) == 2 || (aliveNeighbours grid (x,y) bool list count) == 4 -> A
+--             | otherwise -> D
+
+
+-- aliveNeighbours :: Grid QRCell -> GridCoord -> Bool -> [GridCoord] -> Int -> Int
+-- aliveNeighbours grid (x,y) bool list count
+--   | null list         = count
+--   | isAlive grid (x + fst(head list), y + snd(head list))
+--                       = aliveNeighbours grid (x,y) bool (tail list) (count + 1)
+--   | otherwise         = aliveNeighbours grid (x,y) bool (tail list) count
